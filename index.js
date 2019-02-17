@@ -3,7 +3,7 @@ var multer = require('multer');
 var express = require('express');
 var bodyParser = require('body-parser');
 var donenv = require('dotenv').config();
-// var cors = require('cors');
+var cors = require('cors');
 var apiRoutes = require("./route/goods.route");
 var app = express();
 
@@ -11,8 +11,8 @@ var app = express();
 //   origin: 'https://goods-react-frontend.herokuapp.com',
 //   optionsSuccessStatus: 200 
 // }
+app.use(cors());
 // app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions));
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
