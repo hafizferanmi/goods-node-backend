@@ -4,8 +4,10 @@ Goods node backend was built with Nodejs express framework.
 
 
 ## Client
+Demo:
 https://goods-react-frontend.herokuapp.com
-Github
+
+Github: 
 [Goods react frontend](https://github.com/hafizferanmi/goods_react_frontend)
 
 ## End points
