@@ -24,7 +24,7 @@ var upload = multer({ storage: storage }).single('good_file');
 module.exports = {
 
     getAllGoods: function(req, res) {
-        Goods.find({}, (err, goods) => {
+        Goods.find({}, 'name price', (err, goods) => {
             res.json(goods)
         });
     },
@@ -56,17 +56,14 @@ module.exports = {
 
                 // console.log(book);
                 let good = new Goods(item)
-                .save()
-                .then(result => {
+                .save( (err, good) => {
+                    if (good) {
                         res.status(200).json({error: false, message: 'New item has been added', itemId: result._id });
-                        next();
-                    })
-                    .catch(err => {
-                        res.status(500).json({ error: err });
-                        next();
-                    });
+                    }else{
+                        res.status(500).json({ error: true, err, message: 'Error occured' });
+                    }
+                } );
 
-              
             }
         })
 
