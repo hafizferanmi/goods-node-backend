@@ -14,7 +14,7 @@ Github:
 
 Demo:
 
-[https://goods-node-backend.herokuapp.com/api](https://goods-node-backend.herokuapp.com/api)
+[https://goods-node-backend.herokuapp.com](https://goods-node-backend.herokuapp.com)
 
 
 
