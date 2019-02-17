@@ -6,6 +6,7 @@ var donenv = require('dotenv').config();
 var cors = require('cors');
 var apiRoutes = require("./route/goods.route");
 var app = express();
+var path = require('path');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'https://goods-react-frontend.herokuapp.com');
@@ -15,8 +16,11 @@ var allowCrossDomain = function(req, res, next) {
 }
 
 app.use(allowCrossDomain);
+
+app.use(express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 const port = process.env.PORT;
