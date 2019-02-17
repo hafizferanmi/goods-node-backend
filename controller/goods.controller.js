@@ -38,6 +38,32 @@ module.exports = {
 
     addGood: function(req, res) {
         // console.log(req.body.name);
+        const Joi = require('joi');
+        const data = req.body;
+
+        // define the validation schema
+        const schema = Joi.object().keys({
+            name: Joi.string().required(),
+            price: Joi.string().required(),
+            category: Joi.string().required(),
+            description: Joi.string().required(),
+            color: Joi.string().required()
+        });
+
+        Joi.validate(data, schema, (err, value) => {
+            if (err) {
+                // send a 422 error response if validation fails
+                res.status(422).json({
+                    message: 'Invalid request data',
+                    data: data,
+                    error: true
+                });
+            }
+        });
+
+
+
+
         var item = {
             name: req.body.name,
             price: req.body.price,
