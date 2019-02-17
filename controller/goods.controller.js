@@ -49,7 +49,7 @@ module.exports = {
             color: req.body.color
         }
 
-        // console.log(item);
+        // console.log(req.file);
 
         if (item.name == '' || item.price == '' || item.category == '' || item.description == '' || item.color == '') {
             return res.json({error: true, message: 'All form filed has to be filled'});
@@ -59,6 +59,10 @@ module.exports = {
             if (err) {
                 console.log(err);
             } else {
+
+                // if (req.file.filename == '' || req.file.filename == null || req.file.filename == undefined) {
+                //     return res.json({error: true, message: 'Select good file'});
+                // }
                 // console.log('req.file.filename');
                 // console.log(req.file.filename);
                 item.image = req.file.filename
