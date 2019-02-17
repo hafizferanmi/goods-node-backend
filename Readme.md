@@ -17,10 +17,6 @@ Demo: [https://goods-node-backend.herokuapp.com](https://goods-node-backend.hero
 
 
 
-Demo:
-
-[https://goods-node-backend.herokuapp.com](https://goods-node-backend.herokuapp.com)
-
 
 REQUEST 1
 
