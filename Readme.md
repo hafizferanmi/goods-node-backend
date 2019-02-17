@@ -1,6 +1,6 @@
 # Introduction
 
-Goods node backend built with Nodejs express framework on the server and Reactjs on the client.
+Goods API built with Nodejs express framework on the server and Reactjs on the client.
 
 
 ## Client
