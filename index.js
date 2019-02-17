@@ -9,7 +9,7 @@ var app = express();
 var path = require('path');
 
 var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://goods-react-frontend.herokuapp.com');
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
     next();
@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT;
 var router = express.Router();
-// mongoose.connect(process.env.DB);
-mongoose.connect('mongodb://hf:123hafizferanmi@ds239055.mlab.com:39055/goods');
+mongoose.connect(process.env.DB);
+// mongoose.connect('mongodb://hf:123hafizferanmi@ds239055.mlab.com:39055/goods');
 
 
 router.get('/', function(req, res) {
