@@ -5,8 +5,6 @@ Goods node backend built with Nodejs express framework on the server and Reactjs
 
 ## Client
 
-Demo: https://goods-react-frontend.herokuapp.com
-=======
 Demo:
 https://goods-react-frontend.herokuapp.com
 
