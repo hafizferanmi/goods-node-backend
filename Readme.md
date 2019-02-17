@@ -1,6 +1,6 @@
 # Introduction
 
-Goods node backend was built with Nodejs express framework.
+Goods node backend built with Nodejs express framework on the server and Reactjs on the client.
 
 
 ## Client
