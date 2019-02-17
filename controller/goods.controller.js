@@ -58,7 +58,7 @@ module.exports = {
                 let good = new Goods(item)
                 .save( (err, good) => {
                     if (good) {
-                        res.status(200).json({error: false, message: 'New item has been added', itemId: result._id });
+                        res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
                     }else{
                         res.status(500).json({ error: true, err, message: 'Error occured' });
                     }

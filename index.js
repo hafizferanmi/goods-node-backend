@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT;
 var router = express.Router();
+// mongoose.connect(process.env.DB);
 mongoose.connect('mongodb://hf:123hafizferanmi@ds239055.mlab.com:39055/goods');
 
 
