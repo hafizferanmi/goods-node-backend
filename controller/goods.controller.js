@@ -53,45 +53,79 @@ module.exports = {
         Joi.validate(data, schema, (err, value) => {
             if (err) {
                 // send a 422 error response if validation fails
-                res.status(422).json({
-                    message: 'Invalid request data',
-                    data: data,
-                    error: true
+                return res.json({
+                    error: true,
+                    message: 'All input field is required',
+                    data: value
+                   
                 });
+            }
+
+            else{
+
+                var item = {
+                    name: req.body.name,
+                    price: req.body.price,
+                    category: req.body.category,
+                    description: req.body.description,
+                    color: req.body.color
+                }
+
+                upload(req, res, (err) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        // console.log('req.file.filename');
+                        // console.log(req.file.filename);
+                        item.image = req.file.filename
+
+                        // console.log(book);
+                        let good = new Goods(item)
+                        .save( (err, good) => {
+                            if (good) {
+                               return res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
+                            }else{
+                               return res.status(500).json({ error: true, err, message: 'Error occured' });
+                            }
+                        } );
+
+                    }
+                })
+
             }
         });
 
 
 
 
-        var item = {
-            name: req.body.name,
-            price: req.body.price,
-            category: req.body.category,
-            description: req.body.description,
-            color: req.body.color
-        }
+        // var item = {
+        //     name: req.body.name,
+        //     price: req.body.price,
+        //     category: req.body.category,
+        //     description: req.body.description,
+        //     color: req.body.color
+        // }
 
-        upload(req, res, (err) => {
-            if (err) {
-                console.log(err);
-            } else {
-                // console.log('req.file.filename');
-                // console.log(req.file.filename);
-                item.image = req.file.filename
+        // upload(req, res, (err) => {
+        //     if (err) {
+        //         console.log(err);
+        //     } else {
+        //         // console.log('req.file.filename');
+        //         // console.log(req.file.filename);
+        //         item.image = req.file.filename
 
-                // console.log(book);
-                let good = new Goods(item)
-                .save( (err, good) => {
-                    if (good) {
-                        res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
-                    }else{
-                        res.status(500).json({ error: true, err, message: 'Error occured' });
-                    }
-                } );
+        //         // console.log(book);
+        //         let good = new Goods(item)
+        //         .save( (err, good) => {
+        //             if (good) {
+        //                return res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
+        //             }else{
+        //                return res.status(500).json({ error: true, err, message: 'Error occured' });
+        //             }
+        //         } );
 
-            }
-        })
+        //     }
+        // })
 
   
         
