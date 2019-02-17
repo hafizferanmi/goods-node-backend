@@ -16,6 +16,13 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 
+router.param('id', function(req, res, next, id) {
+  Goods.findById(id).then(function(item){
+    if(!item) { return res.sendStatus(404); }
+    return next();
+  }).catch(next);
+});
+
 router.get('/', function(req, res) {
     res.json('Welcome to our store API.');
 });
