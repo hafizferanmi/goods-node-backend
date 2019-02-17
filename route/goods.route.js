@@ -2,7 +2,6 @@ let router = require('express').Router();
 let Goods = require('../model/goods.model');
 let multer = require('multer');
 let path = require('path');
-var cors = require('cors');
 let goodsController = require('../controller/goods.controller');
 
 
