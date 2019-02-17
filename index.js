@@ -17,7 +17,8 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
-app.use(express.static('uploads'));
+// app.use(express.static('uploads'));
+app.use("/uploads", express.static(path.resolve(__dirname, 'uploads')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
