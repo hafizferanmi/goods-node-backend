@@ -7,7 +7,18 @@ var cors = require('cors');
 var apiRoutes = require("./route/goods.route");
 var app = express();
 
-app.use(cors())
+var whitelist = ['https://goods-react-frontend.herokuapp.com']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (whitelist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
+app.use(cors(corsOptionsDelegate))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
