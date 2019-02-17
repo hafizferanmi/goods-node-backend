@@ -2,6 +2,7 @@ let router = require('express').Router();
 let Goods = require('../model/goods.model');
 let multer = require('multer');
 let path = require('path');
+const { check } = require('express-validator/check')
 let goodsController = require('../controller/goods.controller');
 
 

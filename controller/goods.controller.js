@@ -38,94 +38,43 @@ module.exports = {
 
     addGood: function(req, res) {
         // console.log(req.body.name);
-        const Joi = require('joi');
-        const data = req.body;
+       
 
-        // define the validation schema
-        const schema = Joi.object().keys({
-            name: Joi.string().required(),
-            price: Joi.string().required(),
-            category: Joi.string().required(),
-            description: Joi.string().required(),
-            color: Joi.string().required()
-        });
 
-        Joi.validate(data, schema, (err, value) => {
+        var item = {
+            name: req.body.name,
+            price: req.body.price,
+            category: req.body.category,
+            description: req.body.description,
+            color: req.body.color
+        }
+
+        // console.log(item);
+
+        if (item.name == '' || item.price == '' || item.category == '' || item.description == '' || item.color == '') {
+            return res.json({error: true, message: 'All form filed has to be filled'});
+        }
+
+        upload(req, res, (err) => {
             if (err) {
-                // send a 422 error response if validation fails
-                return res.json({
-                    error: true,
-                    message: 'All input field is required',
-                    data: value
-                   
-                });
-            }
+                console.log(err);
+            } else {
+                // console.log('req.file.filename');
+                // console.log(req.file.filename);
+                item.image = req.file.filename
 
-            else{
-
-                var item = {
-                    name: req.body.name,
-                    price: req.body.price,
-                    category: req.body.category,
-                    description: req.body.description,
-                    color: req.body.color
-                }
-
-                upload(req, res, (err) => {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        // console.log('req.file.filename');
-                        // console.log(req.file.filename);
-                        item.image = req.file.filename
-
-                        // console.log(book);
-                        let good = new Goods(item)
-                        .save( (err, good) => {
-                            if (good) {
-                               return res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
-                            }else{
-                               return res.status(500).json({ error: true, err, message: 'Error occured' });
-                            }
-                        } );
-
+                // console.log(book);
+                let good = new Goods(item)
+                .save( (err, good) => {
+                    if (good) {
+                       return res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
+                    }else{
+                       return res.status(500).json({ error: true, err, message: 'Error occured' });
                     }
-                })
+                } );
 
             }
-        });
-
-
-
-
-        // var item = {
-        //     name: req.body.name,
-        //     price: req.body.price,
-        //     category: req.body.category,
-        //     description: req.body.description,
-        //     color: req.body.color
-        // }
-
-        // upload(req, res, (err) => {
-        //     if (err) {
-        //         console.log(err);
-        //     } else {
-        //         // console.log('req.file.filename');
-        //         // console.log(req.file.filename);
-        //         item.image = req.file.filename
-
-        //         // console.log(book);
-        //         let good = new Goods(item)
-        //         .save( (err, good) => {
-        //             if (good) {
-        //                return res.status(200).json({error: false, message: 'New item has been added', itemId: good._id });
-        //             }else{
-        //                return res.status(500).json({ error: true, err, message: 'Error occured' });
-        //             }
-        //         } );
-
-        //     }
-        // })
+        })
 
   
         
