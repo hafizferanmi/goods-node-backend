@@ -18,7 +18,7 @@ var upload = multer({ storage: storage });
 
 router.param('id', function(req, res, next, id) {
   Goods.findById(id).then(function(item){
-    if(!item) { return res.sendStatus(404); }
+    if(!item) { return res.status(200).json({error: true, message: 'Item not found', status: 404 }); }
     return next();
   }).catch(next);
 });
