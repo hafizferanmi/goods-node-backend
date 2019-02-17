@@ -32,7 +32,7 @@ module.exports = {
 
     getSingleGood: function(req, res) {
         Goods.findById(req.params.id, 'name price category description color image', (err, good) => {
-            res.json(good)
+            res.json({error: false, good})
         })
     },
 
