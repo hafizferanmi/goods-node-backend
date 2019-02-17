@@ -22,11 +22,14 @@ Demo:
 [https://goods-node-backend.herokuapp.com](https://goods-node-backend.herokuapp.com)
 
 
+REQUEST 1
 
 ```http
 GET /api/all_goods
 ```
-Returns
+
+
+RESPONSE 1
 
 ```javascript
 [{
@@ -36,9 +39,12 @@ Returns
 }]
 ```
 
+REQUEST 2
+
 ```http
 POST /api/add_good
 ```
+
 Send
 
 | Key | Type |
@@ -51,7 +57,7 @@ Send
 | `good_file` | `file` | 
 
 
-Returns
+RESPONSE 2
 
 ```javascript
 {
@@ -62,10 +68,12 @@ Returns
 ```
 
 
+REQUEST 3
 ```http
 GET /api/good/:id
 ```
-Returns
+
+RESPONSE 3
 
 ```javascript
 {
