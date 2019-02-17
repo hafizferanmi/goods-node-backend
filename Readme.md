@@ -39,13 +39,25 @@ Returns
 ```http
 POST /api/add_good
 ```
+Send
+
+| Key | Type |
+| :--- | :--- | 
+| `name` | `string` | 
+| `color` | `string` | 
+| `price` | `string` | 
+| `description` | `string` | 
+| `category` | `string` | 
+| `good_file` | `file` | 
+
+
 Returns
 
 ```javascript
 {
   "message" : string,
   "error" : bool,
-  "_id"    : ObjectId
+  "itemId"    : ObjectId
 }
 ```
 
@@ -58,7 +70,7 @@ Returns
 ```javascript
 {
   "_id" : ObjectId,
-  "name" : bool,
+  "name" : string,
   "price"    : string,
   "color"    : string,
   "category"    : string,
