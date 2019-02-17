@@ -8,13 +8,13 @@ Demo:
 https://goods-react-frontend.herokuapp.com
 
 Github: 
-[Goods react frontend](https://github.com/hafizferanmi/goods_react_frontend)
+[https://github.com/hafizferanmi/goods_react_frontend](https://github.com/hafizferanmi/goods_react_frontend)
 
 ## End points
 
-Live endpoint test at 
+Demo:
 
-[Goods node backend](https://goods-node-backend.herokuapp.com/api)
+[https://goods-node-backend.herokuapp.com/api](https://goods-node-backend.herokuapp.com/api)
 
 
 
