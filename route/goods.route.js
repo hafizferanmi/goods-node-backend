@@ -2,6 +2,7 @@ let router = require('express').Router();
 let Goods = require('../model/goods.model');
 let multer = require('multer');
 let path = require('path');
+var cors = require('cors');
 let goodsController = require('../controller/goods.controller');
 
 
@@ -22,7 +23,7 @@ router.get('/', function(req, res) {
 
 router.get('/all_goods', goodsController.getAllGoods);
 router.get('/good/:id', goodsController.getSingleGood);
-router.post('/add_good', upload.single('good_file'), goodsController.addGood);
+router.post('/add_good', cors(), upload.single('good_file'), goodsController.addGood);
 
 
 
