@@ -7,19 +7,13 @@ var cors = require('cors');
 var apiRoutes = require("./route/goods.route");
 var app = express();
 
-// var corsOptions = {
-//   origin: 'https://goods-react-frontend.herokuapp.com',
-//   optionsSuccessStatus: 200 
-// }
-app.use(cors());
-// app.use(cors(corsOptions));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
-
+const corsOpt = {
+    origin: '*', // this work well to configure origin url in the server
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'], // to works well with web app, OPTIONS is required
+    allowedHeaders: ['Content-Type', 'Authorization'] // allow json and token in the headers
+};
+app.use(cors(corsOpt)); // cors for all the routes of the application
+app.options('*', cors(corsOpt));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
